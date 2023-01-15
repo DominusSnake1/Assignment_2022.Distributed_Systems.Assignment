@@ -5,9 +5,17 @@ import java.util.List;
 
 public interface User_DAO {
 
-    public List<User> getAllUsers();
+    void deleteAllUsers();
 
-    public void sellVehicle();
+    void save(User user);
 
-    public void buyVehicle();
+    void delete(int id);
+
+    List<User> getAllUsers();
+
+    User findUserById(int id);
+
+    void sellVehicle();
+
+    void buyVehicle();
 }

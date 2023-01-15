@@ -19,7 +19,6 @@ public class Vehicle {
     private int id;
 
     @Column(name = "owner_id")
-    @NotBlank
     @NotNull
     private int owner_id;
 
@@ -30,12 +29,10 @@ public class Vehicle {
     private String model;
 
     @Column(name = "KTEO_id")
-    @NotBlank
     @NotNull
     private int KTEO_id;
 
     @Column(name = "registration")
-    @NotBlank
     @NotNull
     private String registration;
 

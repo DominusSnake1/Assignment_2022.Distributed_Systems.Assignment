@@ -18,6 +18,9 @@ public class User {
     @Column(name = "id")
     private int id;
 
+    @Column(name = "user_type")
+    private String user_type;
+
     @Column(name = "first_name")
     private String first_name;
 
@@ -26,12 +29,10 @@ public class User {
     private String last_name;
 
     @Column(name = "afm")
-    @NotBlank
     @NotNull
     private int afm;
 
     @Column(name = "area_code")
-    @NotBlank
     @NotNull
     private int area_code;
 
@@ -39,12 +40,17 @@ public class User {
 
     }
 
-    public User(String first_name, String last_name, int afm, int area_code) {
+    public User(String user_type, String first_name, String last_name, int afm, int area_code) {
+        this.user_type = user_type;
         this.first_name = first_name;
         this.last_name = last_name;
         this.afm = afm;
         this.area_code = area_code;
     }
+
+    public String getUser_type() {return user_type;}
+
+    public void setUser_type(String user_type) {this.user_type = user_type;}
 
     public int getId() {return id;}
 
@@ -66,10 +72,8 @@ public class User {
 
     public void setArea_code(int area_code) {this.area_code = area_code;}
 
-
-
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", first_name='" + first_name + '\'' + ", last_name='" + last_name + '\'' + ", afm=" + afm + ", area_code=" + area_code + '}';
+        return "User{" + "id=" + id + ", user_type='" + user_type + '\'' + ", first_name='" + first_name + '\'' + ", last_name='" + last_name + '\'' + ", afm=" + afm + ", area_code=" + area_code + '}';
     }
 }
