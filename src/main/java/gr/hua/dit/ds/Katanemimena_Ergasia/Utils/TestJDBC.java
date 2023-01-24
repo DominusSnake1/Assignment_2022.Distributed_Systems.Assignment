@@ -7,9 +7,9 @@ public class TestJDBC {
 
     public static void main(String[] args) {
 
-        String jdbcUrl = "jdbc:mysql://localhost:3306/VehicleDealership?useSSL=false";
+        String jdbcUrl = "jdbc:mysql://127.0.0.1:3306/VehicleDealership?useSSL=false&createDatabaseIfNotExist=true";
         String user = "root";
-        String pass = "ergasia_kat";
+        String pass = "pass123";
 
         try {
             System.out.println("Connecting to database: " + jdbcUrl);

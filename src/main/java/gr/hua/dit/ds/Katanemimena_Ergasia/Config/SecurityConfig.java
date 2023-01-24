@@ -14,7 +14,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+
 import javax.sql.DataSource;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -43,7 +47,18 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable();
+        http.cors(c->{
+                    CorsConfigurationSource cs = r -> {
+                        CorsConfiguration cc = new CorsConfiguration();
+                        cc.setAllowedOrigins(List.of("*"));
+                        cc.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
+                        cc.setAllowedHeaders(List.of("*"));
+                        return cc;
+                    };
+                    c.configurationSource(cs);
+                });
+
+        http.csrf().disable();
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
