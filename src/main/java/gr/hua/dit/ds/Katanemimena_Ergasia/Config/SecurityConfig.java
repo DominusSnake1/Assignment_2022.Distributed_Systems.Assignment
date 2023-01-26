@@ -1,11 +1,11 @@
 package gr.hua.dit.ds.Katanemimena_Ergasia.Config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -25,6 +25,15 @@ import java.util.List;
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
+//    @Autowired
+//    DataSource dataSource;
+//    @Bean
+//    public JdbcUserDetailsManager jdbcUserDetailsManager() throws Exception {
+//        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
+//        jdbcUserDetailsManager.setDataSource(dataSource);
+//        return jdbcUserDetailsManager;
+//    }
+
     @Bean
     public InMemoryUserDetailsManager userDetailsManager(PasswordEncoder passwordEncoder) {
         UserDetails user = User.withUsername("user")
@@ -41,11 +50,6 @@ public class SecurityConfig {
     }
 
     @Bean
-    public UserDetailsService userDetailsService(DataSource dataSource) {
-        return new JdbcUserDetailsManager(dataSource);
-    }
-
-    @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors(c->{
                     CorsConfigurationSource cs = r -> {
@@ -59,8 +63,6 @@ public class SecurityConfig {
                 });
 
         http.csrf().disable();
-
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http.authorizeRequests().antMatchers("/login").permitAll()
                 .antMatchers("/users/**").hasRole("ADMIN")
