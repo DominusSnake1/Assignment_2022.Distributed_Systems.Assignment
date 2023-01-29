@@ -22,7 +22,6 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(securedEnabled = true)
 public class SecurityConfig {
 
 //    @Autowired
@@ -43,7 +42,7 @@ public class SecurityConfig {
 
         UserDetails admin = User.withUsername("admin")
                 .password(passwordEncoder.encode("admin"))
-                .roles("USER", "ADMIN")
+                .roles("ADMIN")
                 .build();
 
         return new InMemoryUserDetailsManager(user, admin);
@@ -57,6 +56,7 @@ public class SecurityConfig {
                         cc.setAllowedOrigins(List.of("*"));
                         cc.setAllowedMethods(List.of("GET","POST","PUT","DELETE","OPTIONS"));
                         cc.setAllowedHeaders(List.of("*"));
+                        cc.setMaxAge(3600L);
                         return cc;
                     };
                     c.configurationSource(cs);

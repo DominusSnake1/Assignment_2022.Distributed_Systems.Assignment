@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Home Page</title>
+  <meta name="viewport" content="width=device-width" />
+  <base href="/" />
+</head>
+<body>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+  Welcome Admin!
+
+  <br><br><a href="/newUser" class="button">Add a new User</a>
+</div>
+
+<div sec:authorize="hasRole('ROLE_USER')">
+  Welcome User!
+
+</div>
+
+<br><a href="http://127.0.0.1:8080/logout" class="button">LOG OUT</a>
+
+</body>
+</html>
