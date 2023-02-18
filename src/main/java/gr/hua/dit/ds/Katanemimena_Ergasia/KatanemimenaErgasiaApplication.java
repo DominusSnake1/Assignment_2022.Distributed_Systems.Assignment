@@ -11,8 +11,6 @@ public class KatanemimenaErgasiaApplication {
 	public static void main(String[] args) throws InterruptedException {
 		TestJDBC.TestConnection();
 
-		TimeUnit.SECONDS.sleep(2);
-
 		SpringApplication.run(KatanemimenaErgasiaApplication.class, args);
 	}
 

@@ -1,6 +1,6 @@
 package gr.hua.dit.ds.Katanemimena_Ergasia.DAO;
 
-import gr.hua.dit.ds.Katanemimena_Ergasia.Entities.User;
+import gr.hua.dit.ds.Katanemimena_Ergasia.Entities.UserData;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -19,36 +19,41 @@ public class User_DAO_Impl implements User_DAO {
     @Override
     @Transactional
     public void deleteAllUsers() {
-        entityManager.createNativeQuery("DELETE FROM Users WHERE user_type = 'user'").executeUpdate();
+        entityManager.createNativeQuery("DELETE FROM UserData WHERE user_type = 'user'").executeUpdate();
     }
 
     @Override
     @Transactional
-    public void save(User user) {
-        User new_user = entityManager.merge(user);
+    public void save(UserData userData) {
+        UserData new_userData = entityManager.merge(userData);
     }
 
     @Override
     @Transactional
     public void delete(int id) {
-        User user = entityManager.find(User.class, id);
-        entityManager.remove(user);
+        UserData userData = entityManager.find(UserData.class, id);
+        entityManager.remove(userData);
     }
 
     @Override
     @Transactional
-    public List<User> getAllUsers() {
+    public List<UserData> getAllUsers() {
         Session session = entityManager.unwrap(Session.class);
 
-        Query query = session.createQuery("from User", User.class);
-        List<User> users = query.getResultList();
-        return users;
+        Query query = session.createQuery("from UserData", UserData.class);
+        return (List<UserData>) query.getResultList();
     }
 
     @Override
     @Transactional
-    public User findUserById(int id) {
-        return entityManager.find(User.class, id);
+    public UserData findUserById(int id) {
+        return entityManager.find(UserData.class, id);
+    }
+
+    @Override
+    @Transactional
+    public UserData findUserByAFM(int afm) {
+        return entityManager.find(UserData.class, afm);
     }
 
     @Override

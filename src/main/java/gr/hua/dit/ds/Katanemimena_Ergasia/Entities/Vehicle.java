@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -18,9 +17,9 @@ public class Vehicle {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "owner_id")
+    @Column(name = "owner_afm")
     @NotNull
-    private int owner_id;
+    private int owner_afm;
 
     @Column(name = "brand")
     private String brand;
@@ -37,11 +36,10 @@ public class Vehicle {
     private String registration;
 
     public Vehicle() {
-
     }
 
-    public Vehicle(int owner_id, String brand, String model, int KTEO_id, String registration) {
-        this.owner_id = owner_id;
+    public Vehicle(int owner_afm, String brand, String model, int KTEO_id, String registration) {
+        this.owner_afm = owner_afm;
         this.brand = brand;
         this.model = model;
         this.KTEO_id = KTEO_id;
@@ -68,12 +66,12 @@ public class Vehicle {
 
     public void setRegistration(String registration) {this.registration = registration;}
 
-    public int getOwner_id() {return owner_id;}
+    public int getOwner_afm() {return owner_afm;}
 
-    public void setOwner_id(int owner_id) {this.owner_id = owner_id;}
+    public void setOwner_afm(int owner_afm) {this.owner_afm = owner_afm;}
 
     @Override
     public String toString() {
-        return "Vehicle{" + "id=" + id + ", owner_id=" + owner_id + ", brand='" + brand + '\'' + ", model='" + model + '\'' + ", KTEO_id=" + KTEO_id + ", registration='" + registration + '\'' + '}';
+        return "Vehicle{" + "id=" + id + ", owner_afm=" + owner_afm + ", brand='" + brand + '\'' + ", model='" + model + '\'' + ", KTEO_id=" + KTEO_id + ", registration='" + registration + '\'' + '}';
     }
 }

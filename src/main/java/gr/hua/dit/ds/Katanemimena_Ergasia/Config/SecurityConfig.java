@@ -1,21 +1,21 @@
 package gr.hua.dit.ds.Katanemimena_Ergasia.Config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -24,29 +24,25 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig {
 
-//    @Autowired
-//    DataSource dataSource;
-//    @Bean
-//    public JdbcUserDetailsManager jdbcUserDetailsManager() throws Exception {
-//        JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager();
-//        jdbcUserDetailsManager.setDataSource(dataSource);
-//        return jdbcUserDetailsManager;
-//    }
-
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager(PasswordEncoder passwordEncoder) {
-        UserDetails user = User.withUsername("user")
-                .password(passwordEncoder.encode("password"))
-                .roles("USER")
-                .build();
-
-        UserDetails admin = User.withUsername("admin")
-                .password(passwordEncoder.encode("admin"))
-                .roles("ADMIN")
-                .build();
-
-        return new InMemoryUserDetailsManager(user, admin);
+    public JdbcUserDetailsManager jdbcUserDetailsManager(DataSource dataSource) throws Exception {
+        return new JdbcUserDetailsManager(dataSource);
     }
+
+//    @Bean
+//    public InMemoryUserDetailsManager userDetailsManager(PasswordEncoder passwordEncoder) {
+//        UserDetails user = User.withUsername("user")
+//                .password(passwordEncoder.encode("password"))
+//                .roles("USER")
+//                .build();
+//
+//        UserDetails admin = User.withUsername("admin")
+//                .password(passwordEncoder.encode("admin"))
+//                .roles("ADMIN")
+//                .build();
+//
+//        return new InMemoryUserDetailsManager(user, admin);
+//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

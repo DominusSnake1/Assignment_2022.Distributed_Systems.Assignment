@@ -2,13 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add a new user</title>
+    <title>Add a new userData</title>
     <meta name="viewport" content="width=device-width" />
-    <script src="/templates/User/createUser.js"></script>
 </head>
     <body>
-        <h1>Add a new user</h1>
+    <script type="text/javascript" src="/User.js"></script>
 
+        <h1>Add a new User</h1>
+
+        <label for="user_type">User Type: </label>
+        <select name="User Type" id="user_type" autocomplete="off">
+            <option disabled selected value> -- "USER" or "ADMIN" -- </option>
+            <option value="USER">USER</option>
+            <option value="ADMIN">ADMIN</option>
+        </select><br>
         <label for="first_name">First Name: </label>
         <input type="text" id="first_name" name="First name" placeholder="What's your first name?" autocomplete="off"><br>
         <label for="last_name">Last Name: </label>
@@ -18,6 +25,8 @@
         <label for="area_code">Area Code: </label>
         <input type="text" id="area_code" name="Area code" placeholder="What's your area code?" autocomplete="off"><br><br>
 
-        <button id="newUser_btn" onclick="addUser()">Create User</button>
+        <button id="newUser_btn" onclick="addUser()">Create User</button><br><br>
+
+        <button onclick="history.back()">Go Back</button>
     </body>
 </html>

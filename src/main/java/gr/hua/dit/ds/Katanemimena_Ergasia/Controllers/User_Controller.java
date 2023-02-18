@@ -1,7 +1,7 @@
 package gr.hua.dit.ds.Katanemimena_Ergasia.Controllers;
 
 import gr.hua.dit.ds.Katanemimena_Ergasia.DAO.User_DAO_Impl;
-import gr.hua.dit.ds.Katanemimena_Ergasia.Entities.User;
+import gr.hua.dit.ds.Katanemimena_Ergasia.Entities.UserData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -15,16 +15,17 @@ public class User_Controller {
     private User_DAO_Impl userDaoImpl;
 
     @PostMapping("/add")
-    public User save(@RequestBody User user) {
-        user.setId(0);
-        userDaoImpl.save(user);
-        return user;
+    public UserData save(@RequestBody UserData userData) {
+        userData.setId(0);
+        userDaoImpl.save(userData);
+        return userData;
     }
 
-    @DeleteMapping("/delete/")
-    public void deleteAllUsers() {
-        userDaoImpl.deleteAllUsers();
-    }
+// Meant for Troubleshooting ONLY!
+//    @DeleteMapping("/delete/")
+//    public void deleteAllUsers() {
+//        userDaoImpl.deleteAllUsers();
+//    }
 
     @DeleteMapping("/delete/id={id}")
     public void delete(@PathVariable int id) {
@@ -32,12 +33,12 @@ public class User_Controller {
     }
 
     @GetMapping("/")
-    public List<User> getUsers() {
+    public List<UserData> getUsers() {
         return userDaoImpl.getAllUsers();
     };
 
-    @GetMapping("/id={id}")
-    public User get(@PathVariable int id) {
-        return userDaoImpl.findUserById(id);
+    @GetMapping("/afm={afm}")
+    public UserData get(@PathVariable int afm) {
+        return userDaoImpl.findUserById(afm);
     }
 }

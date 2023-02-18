@@ -1,24 +1,59 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="UTF-8">
-  <title>Home Page</title>
-  <meta name="viewport" content="width=device-width" />
-  <base href="/" />
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width" />
+    <base href="/" />
 </head>
 <body>
-<div sec:authorize="hasRole('ROLE_ADMIN')">
-  Welcome Admin!
+    <script type="text/javascript" src="/User.js"></script>
+    <script type="text/javascript" src="/Vehicle.js"></script>
 
-  <br><br><a href="/newUser" class="button">Add a new User</a>
-</div>
+    Welcome, <span sec:authentication="name">Username</span>!<br><br>
 
-<div sec:authorize="hasRole('ROLE_USER')">
-  Welcome User!
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <button id="all-btn" onclick="printAllUsers()">Show all Users</button><br>
 
-</div>
+        <table id="userData-table">
+            <thead>
+            <th id="id_col">ID</th>
+            <th id="ut_col">Type</th>
+            <th id="fn_col">First Name</th>
+            <th id="ln_col">Last Name</th>
+            <th id="afm_col">AFM</th>
+            <th id="ac_col">Area Code</th>
+            <th id="del_col">Delete?</th>
+            </thead>
+            <tbody id="userList"></tbody>
+        </table><br>
+    </div>
 
-<br><a href="http://127.0.0.1:8080/logout" class="button">LOG OUT</a>
+    <button onclick="printAllVehicles()">See Available Vehicles</button><br>
+
+    <table id="veh-table">
+        <thead>
+        <th id="vid_col">ID</th>
+        <th id="oi_col">Owner AFM</th>
+        <th id="br_col">Brand</th>
+        <th id="mo_col">Model</th>
+        <th id="kt_col">KTEO ID</th>
+        <th id="re_col">Registration</th>
+        <th sec:authorize="hasRole('ROLE_ADMIN')" id="vdel_col">Delete?</th>
+        </thead>
+        <tbody id="vehList"></tbody>
+    </table>
+
+    <div sec:authorize="hasRole('ROLE_ADMIN')">
+        <br><a href="/newUsers" class="button"><button>Add new Users</button></a>
+        <a href="/newVehicles" class="button"><button>Add new Vehicles</button></a>
+    </div>
+
+    <div sec:authorize="hasRole('ROLE_USER')">
+        <br><a href="/newVehicles" class="button"><button>Add new Vehicles</button></a>
+    </div>
+
+    <br><a href="/logout"><button>LOG OUT</button></a>
 
 </body>
 </html>

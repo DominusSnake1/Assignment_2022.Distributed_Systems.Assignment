@@ -2,13 +2,12 @@ package gr.hua.dit.ds.Katanemimena_Ergasia.Controllers;
 
 import gr.hua.dit.ds.Katanemimena_Ergasia.DAO.User_DAO_Impl;
 import gr.hua.dit.ds.Katanemimena_Ergasia.DAO.Vehicle_DAO_Impl;
-import gr.hua.dit.ds.Katanemimena_Ergasia.Entities.User;
+import gr.hua.dit.ds.Katanemimena_Ergasia.Entities.UserData;
 import gr.hua.dit.ds.Katanemimena_Ergasia.Entities.Vehicle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
 
 @RestController
@@ -20,15 +19,14 @@ public class Vehicle_Controller {
     @Autowired
     private User_DAO_Impl userDaoImpl;
 
-    @PostMapping("/owner_id={o_id}")
-    public Vehicle save(@PathVariable int o_id, @RequestBody Vehicle vehicle) {
-        User user = userDaoImpl.findUserById(o_id);
+    @PostMapping("/owner_afm={o_afm}")
+    public Vehicle save(@PathVariable int o_afm, @RequestBody Vehicle vehicle) {
+        UserData userData = userDaoImpl.findUserByAFM(o_afm);
 
-        if (user == null) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with id: " + o_id + ", is not found.");
-        }
+//        if (userData == null) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "User with afm: " + o_afm + ", is not found.");
+//        }
 
-        vehicle.setOwner_id(o_id);
         vehicle.setId(0);
         vehicleDaoImpl.save(vehicle);
         return vehicle;

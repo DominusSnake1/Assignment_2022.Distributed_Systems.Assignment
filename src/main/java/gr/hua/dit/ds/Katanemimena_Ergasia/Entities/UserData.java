@@ -10,8 +10,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "Users")
-public class User {
+@Table(name = "UserData")
+public class UserData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +36,11 @@ public class User {
     @NotNull
     private int area_code;
 
-    public User() {
+    public UserData() {
 
     }
 
-    public User(String user_type, String first_name, String last_name, int afm, int area_code) {
+    public UserData(String user_type, String first_name, String last_name, int afm, int area_code) {
         this.user_type = user_type;
         this.first_name = first_name;
         this.last_name = last_name;
