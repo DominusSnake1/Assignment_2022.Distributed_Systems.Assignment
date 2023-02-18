@@ -1,0 +1,76 @@
+/* Background color and font family for everything in the body of the homepage. */
+body{
+    background: linear-gradient(rgb(97, 96, 96), rgb(10, 9, 9));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: sans-serif;
+}
+/* Welcome msg centering*/
+div#Welcome-msg-div{
+    color: white;
+    text-shadow: 1px 2px 5px black;
+    font-size: large;
+    margin: auto;
+    width: 25%;
+    text-align: center;
+}
+
+/*Buttons*/
+button{
+    margin-bottom: 10px;
+    border-style: outset;
+    border-width: 5px;
+    border-color: rebeccapurple;
+    border-radius: 10px;
+    background-color: black;
+    text-align: center;
+    color: rgb(200, 200, 200);
+    padding: 2px;
+}
+button#LogOut-btn{
+    color: rgb(200, 0, 0);
+    padding: 5px;
+    position:absolute; top:0; right:0;
+}
+button#AdminAddNewUs-btn{
+    margin-left: 5px;
+}
+
+button#allU-btn{
+    position: relative;
+    top: 65px;
+}
+
+button#allV-btn{
+    position: relative;
+    top: 65px;
+}
+
+/* Tables */
+table#userData-table{
+    text-shadow: 1px 2px 5px grey;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    border-style: outset;
+    border-width: 5px;
+    border-color: rebeccapurple;
+    border-radius: 10px;
+    padding: 10px;
+}
+table#veh-table{
+    text-shadow: 1px 2px 5px grey;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 50px;
+    border-style: outset;
+    border-width: 5px;
+    border-color: rebeccapurple;
+    border-radius: 10px;
+    padding: 10px;
+}
+td,tbody{
+    border: 1px solid black;
+}

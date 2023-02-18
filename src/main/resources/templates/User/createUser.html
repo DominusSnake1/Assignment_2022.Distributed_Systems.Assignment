@@ -4,29 +4,35 @@
     <meta charset="UTF-8">
     <title>Add a new userData</title>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/CreateUserStyleSheet.css">
 </head>
-    <body>
-    <script type="text/javascript" src="/User.js"></script>
+<body>
+<script type="text/javascript" src="/User.js"></script>
+<div id="Header-div">
+    <h1>Add a new User</h1>
+</div>
 
-        <h1>Add a new User</h1>
+<div id="FormToAddUser-div">
+    <label for="user_type">User Type: </label>
+    <select name="User Type" id="user_type" autocomplete="off">
+        <option disabled selected value> -- "USER" or "ADMIN" -- </option>
+        <option value="USER">USER</option>
+        <option value="ADMIN">ADMIN</option>
+    </select><br>
+    <label for="first_name">First Name: </label>
+    <input type="text" id="first_name" name="First name" placeholder="What's your first name?" autocomplete="off"><br>
+    <label for="last_name">Last Name: </label>
+    <input type="text" id="last_name" name="Last name" placeholder="What's your last name?" autocomplete="off"><br>
+    <label for="afm">AFM: </label>
+    <input type="text" id="afm" name="afm" placeholder="What's your afm?" autocomplete="off"><br>
+    <label for="area_code">Area Code: </label>
+    <input type="text" id="area_code" name="Area code" placeholder="What's your area code?" autocomplete="off"><br><br>
+</div>
 
-        <label for="user_type">User Type: </label>
-        <select name="User Type" id="user_type" autocomplete="off">
-            <option disabled selected value> -- "USER" or "ADMIN" -- </option>
-            <option value="USER">USER</option>
-            <option value="ADMIN">ADMIN</option>
-        </select><br>
-        <label for="first_name">First Name: </label>
-        <input type="text" id="first_name" name="First name" placeholder="What's your first name?" autocomplete="off"><br>
-        <label for="last_name">Last Name: </label>
-        <input type="text" id="last_name" name="Last name" placeholder="What's your last name?" autocomplete="off"><br>
-        <label for="afm">AFM: </label>
-        <input type="text" id="afm" name="afm" placeholder="What's your afm?" autocomplete="off"><br>
-        <label for="area_code">Area Code: </label>
-        <input type="text" id="area_code" name="Area code" placeholder="What's your area code?" autocomplete="off"><br><br>
+<div id="AddUserbtns-div">
+    <button id="newUser_btn" onclick="addUser()">Create User</button>
+    <button onclick="history.back()">Go Back</button>
+</div>
 
-        <button id="newUser_btn" onclick="addUser()">Create User</button><br><br>
-
-        <button onclick="history.back()">Go Back</button>
-    </body>
+</body>
 </html>
