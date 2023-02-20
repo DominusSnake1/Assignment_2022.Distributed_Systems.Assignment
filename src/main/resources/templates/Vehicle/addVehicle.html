@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+    .body{background: linear-gradient(rgb(97, 96, 96), rgb(10, 9, 9)) no-repeat fixed; font-family: sans-serif;}
+    .div{color: white; text-shadow: 1px 2px 5px black; font-size: large; text-align: center;}
+    .veh-div{border-radius: 10px; text-align: center; color: rgb(200, 200, 200); padding: 2px; margin-bottom: 5px;}
+    .label{color: white; font-weight: bold; padding: 5px; margin-bottom: 5px;}
+    .input{border-style: outset; border-width: 5px; border-color: rebeccapurple; border-radius: 10px; background-color: black; text-align: center; color:white; padding: 2px; margin-bottom: 5px;}
+    .button{margin-bottom: 10px; border-style: outset; border-width: 5px; border-color: rebeccapurple; border-radius: 10px; background-color: black; text-align: center; color: rgb(200, 200, 200); padding: 2px;}
+</style>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width" />
     <title>Add a new Vehicle</title>
-    <link rel="stylesheet" href="/AddVehicleStyleSheet.css">
 </head>
-<body>
+
+<body class="body">
 <script type="text/javascript" src="/Vehicle.js"></script>
-<div id="Header-div">
-    <h1>Add a new Vehicle</h1>
+<div id="Header-div" class="div">
+    <h1 style="text-align: center">Add a new Vehicle</h1>
 </div>
 
-<div id="FormToAddVehicle-div">
-    <label for="o_afm">Owner AFM: </label>
-    <input type="number" id="o_afm" name="afm" placeholder="What's the owner's AFM" min="1"><br>
-    <label for="brand">Brand: </label>
-    <input type="text" id="brand" name="Brand" placeholder="What's the car's brand?" autocomplete="off"><br>
-    <label for="model">Model: </label>
-    <input type="text" id="model" name="Model" placeholder="What's the car's model?" autocomplete="off"><br>
-    <label for="kteo">KTEO ID: </label>
-    <input type="number" id="kteo" name="KTEO" placeholder="What's the car's KTEO ID?" autocomplete="off" min="1"><br>
-    <label for="regis">Registration: </label>
-    <input type="text" id="regis" name="Registration" placeholder="What's the car's Registration Number?" autocomplete="off"><br><br>
+<div id="FormToAddVehicle-div" class="veh-div">
+    <hr style="width: 25%">
+    <label for="o_afm" class="label">Owner AFM: </label>
+    <input type="number" id="o_afm" name="afm" placeholder="What's the owner's AFM" min="1" class="input"><br>
+    <label for="brand" class="label">Brand: </label>
+    <input type="text" id="brand" name="Brand" placeholder="What's the car's brand?" autocomplete="off" class="input"><br>
+    <label for="model" class="label">Model: </label>
+    <input type="text" id="model" name="Model" placeholder="What's the car's model?" autocomplete="off" class="input"><br>
+    <label for="kteo" class="label">KTEO ID: </label>
+    <input type="number" id="kteo" name="KTEO" placeholder="What's the car's KTEO ID?" autocomplete="off" min="1" class="input"><br>
+    <label for="regis" class="label">Registration: </label>
+    <input type="text" id="regis" name="Registration" placeholder="What's the car's Registration Number?" autocomplete="off" class="input">
+    <hr style="width: 25%"><br>
 </div>
-<div id="AddVehiclebtns-div">
-    <button id="newVeh_btn" onclick="addVehicle()">Add Vehicle</button>
-    <button onclick="history.back()">Go Back</button>
+<div id="AddVehiclebtns-div" style="text-align: center">
+    <button id="newVeh_btn" onclick="addVehicle()" class="button">Add Vehicle</button>
+    <button onclick="history.back()" class="button">Go Back</button>
 </div>
 
 </body>

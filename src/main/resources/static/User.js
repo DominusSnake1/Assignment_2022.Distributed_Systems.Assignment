@@ -42,13 +42,13 @@ function loadUsersTable(data) {
      for (var i = 0; i < data.length; i++) {
          var row =
             `<tr>
-                <td>${data[i].id}</td>
-                <td>${data[i].user_type}</td>
-                <td>${data[i].first_name}</td>
-                <td>${data[i].last_name}</td>
-                <td>${data[i].afm}</td>
-                <td>${data[i].area_code}</td>
-                <td><button value="${data[i].id}" onclick="deleteUser(this)">DELETE</button></td>
+                <td style="border: 1px solid black;">${data[i].id}</td>
+                <td style="border: 1px solid black;">${data[i].user_type}</td>
+                <td style="border: 1px solid black;">${data[i].first_name}</td>
+                <td style="border: 1px solid black;">${data[i].last_name}</td>
+                <td style="border: 1px solid black;">${data[i].afm}</td>
+                <td style="border: 1px solid black;">${data[i].area_code}</td>
+                <td><button value="${data[i].id}" onclick="deleteUser(this)" style="color: red">DELETE</button></td>
             </tr>`
 
         table.innerHTML += row;

@@ -1,12 +1,16 @@
-### Run an MySQL database using docker
+### Run an MySQL database using docker.
 
 ```bash
 docker run --name mysqldb -v mysqldbvol:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=pass123 -e MYSQL_ROOT_HOST='%' --rm -d mysql:8
 ```
 
-### Stop and Remove Database Data
+### Stop the database.
 ```bash
 docker stop mysqldb
+```
+
+### Delete the database.
+```bash
 docker volume rm mysqldbvol
 ```
 ###

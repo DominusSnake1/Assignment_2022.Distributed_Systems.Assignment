@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 
+<style id="styles">
+    .body {background: linear-gradient(rgb(97, 96, 96), rgb(10, 9, 9)) no-repeat fixed; font-family: sans-serif;}
+    .welcome-msg-div {color: white; text-shadow: 1px 2px 5px black; font-size: large; margin: auto; width: 25%; text-align: center;}
+    .button {border-style: outset; border-width: 5px; border-color: rebeccapurple; border-radius: 10px; background-color: black; text-align: center; color: rgb(200, 200, 200); padding: 2px;}
+    .LogOut-btn{color: rgb(200, 0, 0); padding: 5px; position:absolute; top:0; right:0;}
+    .AdminAddNewUs-btn{margin-left: 5px;}
+    .userData-table{color: white; text-shadow: 1px 2px 5px grey; margin: 10px auto auto; border-style: outset; border-width: 5px; border-color: rebeccapurple; border-radius: 10px; padding: 10px;}
+    .veh-table{color: white; text-shadow: 1px 2px 5px grey; margin: 10px auto 50px; border-style: outset; border-width: 5px; border-color: rebeccapurple; border-radius: 10px; padding: 10px;}
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Home Page</title>
     <meta name="viewport" content="width=device-width" />
     <base href="/" />
-    <link rel="stylesheet" href="/HomePageStyleSheet.css">
 </head>
 
-<body>
+<body class="body">
 
 <script type="text/javascript" src="/User.js"></script>
 <script type="text/javascript" src="/Vehicle.js"></script>
 
-<div id="Welcome-msg-div">
+<div id="Welcome-msg-div" class="welcome-msg-div">
     <h1>Welcome, <span sec:authentication="name">Username</span>!</h1>
-    <a href="/logout"><button id="LogOut-btn">LOG OUT</button></a>
+    <a href="/logout"><button id="LogOut-btn" class="LogOut-btn">LOG OUT</button></a>
 </div>
 
 <hr class="hr">
 
 <div id="AdminShowAllUsers-div" sec:authorize="hasRole('ROLE_ADMIN')">
-    <button id="allU-btn" onclick="printAllUsers()">Show all Users</button><br>
+    <div style="text-align:center;"><button id="allU-btn" onclick="printAllUsers()" class="button">Show all Users</button></div>
 
-    <table id="userData-table">
+    <table id="userData-table" class="userData-table">
         <thead>
         <th id="id_col">ID</th>
         <th id="ut_col">Type</th>
@@ -34,14 +43,14 @@
         <th id="ac_col">Area Code</th>
         <th id="del_col">Delete?</th>
         </thead>
-        <tbody id="userList"></tbody>
+        <tbody id="userList" style="border: 1px solid black;"></tbody>
     </table><br>
-</div>
+</div><br>
 
 <div id="ShowAllVehicles-div">
-    <button id="allV-btn" onclick="printAllVehicles()">See Available Vehicles</button><br>
+    <div style="text-align:center;"><button id="allV-btn" onclick="printAllVehicles()" class="button">See Available Vehicles</button></div>
 
-    <table id="veh-table">
+    <table id="veh-table" class="veh-table">
         <thead>
         <th id="vid_col">ID</th>
         <th id="oi_col">Owner AFM</th>
@@ -49,27 +58,22 @@
         <th id="mo_col">Model</th>
         <th id="kt_col">KTEO ID</th>
         <th id="re_col">Registration</th>
+        <th id="int_col">Interested?</th>
         <th sec:authorize="hasRole('ROLE_ADMIN')" id="vdel_col">Delete?</th>
         </thead>
-        <tbody id="vehList"></tbody>
+        <tbody id="vehList" style="border: 1px solid black;"></tbody>
     </table>
 </div>
 
 <hr class="hr">
 
-<div id="AdminAddNew-div" sec:authorize="hasRole('ROLE_ADMIN')">
-    <br>
-    <Center>
-        <a href="/newVehicles" class="button"><button id="AdminAddNewVs-btn" class="admin">Add new Vehicles</button></a>
-        <a href="/newUsers" class="button"><button id="AdminAddNewUs-btn" class="admin">Add new Users</button></a>
-    </Center>
+<div id="AdminAddNew-div" sec:authorize="hasRole('ROLE_ADMIN')" style="text-align: center;">
+    <a href="/newUsers"><button id="AdminAddNewUs-btn" class="admin button AdminAddNewUs-btn">Add new Users</button></a>
 </div>
 
-<div id="UserAddNew-div" sec:authorize="hasRole('ROLE_USER')">
-    <br>
-    <Center><a href="/newVehicles" class="button"><button id="UserAddNewVs-btn" class="user">Add new Vehicles</button></a></Center>
+<div style="text-align: center;">
+    <a href="/newVehicles"><button id="UserAddNewVs-btn" class="user button">Add new Vehicles</button></a>
 </div>
-
 
 </body>
 </html>

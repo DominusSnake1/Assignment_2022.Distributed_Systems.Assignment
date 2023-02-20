@@ -10,7 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "UserData")
+@Table(name = "user_data")
 public class UserData {
 
     @Id
@@ -21,10 +21,10 @@ public class UserData {
     @Column(name = "user_type")
     private String user_type;
 
-    @Column(name = "first_name")
+    @Column(name = "firstname")
     private String first_name;
 
-    @Column(name = "last_name")
+    @Column(name = "lastname")
     @NotBlank
     private String last_name;
 
@@ -32,7 +32,7 @@ public class UserData {
     @NotNull
     private int afm;
 
-    @Column(name = "area_code")
+    @Column(name = "areacode")
     @NotNull
     private int area_code;
 

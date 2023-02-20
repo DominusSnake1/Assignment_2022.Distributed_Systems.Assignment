@@ -36,19 +36,37 @@ function deleteVeh(id) {
     }
 }
 
+function showInterest(own_afm, regis) {
+       if (confirm(`Are you interested in the Vehicle with registration number of: ${regis}?`)) {
+           let int_afm = prompt("What's your afm?");
+
+           fetch(`http://127.0.0.1:8080/interested/regis=${regis}`, {
+               method: 'POST',
+               body: JSON.stringify({
+                   own_afm: own_afm,
+                   int_afm: int_afm,
+                   regis: regis
+               })
+           }).then(r => alert("Interest has been shown!"))
+       } else {
+           alert("No interest was shown for this vehicle.")
+       }
+}
+
 function loadVehTable(data) {
     const table = document.getElementById('vehList');
 
     for (var i = 0; i < data.length; i++) {
         var row =
             `<tr>
-                <td>${data[i].id}</td>
-                <td>${data[i].owner_afm}</td>
-                <td>${data[i].brand}</td>
-                <td>${data[i].model}</td>
-                <td>${data[i].kteo_id}</td>
-                <td>${data[i].registration}</td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')"><button value="${data[i].id}" onclick="deleteVeh(this)">DELETE</button></td>
+                <td style="border: 1px solid black;">${data[i].id}</td>
+                <td style="border: 1px solid black;">${data[i].owner_afm}</td>
+                <td style="border: 1px solid black;">${data[i].brand}</td>
+                <td style="border: 1px solid black;">${data[i].model}</td>
+                <td style="border: 1px solid black;">${data[i].kteo_id}</td>
+                <td style="border: 1px solid black;">${data[i].registration}</td>
+                <td><button value="${data[i].registration}" onclick="showInterest(this)" style="color: green">Show Interest</button></td>
+                <td sec:authorize="hasRole('ROLE_ADMIN')"><button value="${data[i].id}" onclick="deleteVeh(this)" style="color: red">DELETE</button></td>
             </tr>`
 
         table.innerHTML += row;

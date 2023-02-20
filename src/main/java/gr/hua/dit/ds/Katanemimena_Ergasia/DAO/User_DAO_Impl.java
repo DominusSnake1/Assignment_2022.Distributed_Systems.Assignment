@@ -5,7 +5,6 @@ import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
@@ -19,14 +18,12 @@ public class User_DAO_Impl implements User_DAO {
     @Override
     @Transactional
     public void deleteAllUsers() {
-        entityManager.createNativeQuery("DELETE FROM UserData WHERE user_type = 'user'").executeUpdate();
+        entityManager.createNativeQuery("DELETE FROM user_data WHERE user_type = 'user'").executeUpdate();
     }
 
     @Override
     @Transactional
-    public void save(UserData userData) {
-        UserData new_userData = entityManager.merge(userData);
-    }
+    public void save(UserData u) {entityManager.merge(u);}
 
     @Override
     @Transactional

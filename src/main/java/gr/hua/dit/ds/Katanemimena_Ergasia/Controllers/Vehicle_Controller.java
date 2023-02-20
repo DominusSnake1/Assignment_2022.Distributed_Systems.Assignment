@@ -1,5 +1,6 @@
 package gr.hua.dit.ds.Katanemimena_Ergasia.Controllers;
 
+import gr.hua.dit.ds.Katanemimena_Ergasia.DAO.Interested_DAO_Impl;
 import gr.hua.dit.ds.Katanemimena_Ergasia.DAO.User_DAO_Impl;
 import gr.hua.dit.ds.Katanemimena_Ergasia.DAO.Vehicle_DAO_Impl;
 import gr.hua.dit.ds.Katanemimena_Ergasia.Entities.UserData;
@@ -18,6 +19,9 @@ public class Vehicle_Controller {
     private Vehicle_DAO_Impl vehicleDaoImpl;
     @Autowired
     private User_DAO_Impl userDaoImpl;
+
+    @Autowired
+    private Interested_DAO_Impl interestedDaoImpl;
 
     @PostMapping("/owner_afm={o_afm}")
     public Vehicle save(@PathVariable int o_afm, @RequestBody Vehicle vehicle) {
@@ -49,4 +53,9 @@ public class Vehicle_Controller {
 
     @GetMapping("/id={id}")
     public Vehicle get(@PathVariable int id) {return vehicleDaoImpl.findVehicleById(id);}
+
+    @GetMapping("/interested/regis={regis}")
+    public void showInterest(@PathVariable String regis, int own_afm) {
+        interestedDaoImpl.showInterest(regis, own_afm);
+    }
 }

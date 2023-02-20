@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<style>
+    .body{background: linear-gradient(rgb(97, 96, 96), rgb(10, 9, 9)) no-repeat fixed; font-family: sans-serif;}
+    .user_type{border-style: outset; border-width: 5px; border-color: rebeccapurple; border-radius: 10px; background-color: black; text-align: center; color: rgb(200, 200, 200); padding: 2px; margin-bottom: 5px;}
+    .button{margin-bottom: 10px; border-style: outset; border-width: 5px; border-color: rebeccapurple; border-radius: 10px; background-color: black; text-align: center; color: rgb(200, 200, 200); padding: 2px;}
+    .input{border-style: outset; border-width: 5px; border-color: rebeccapurple; border-radius: 10px; background-color: black; text-align: center; color:white; padding: 2px; margin-bottom: 5px;}
+    .label{font-weight: bold; padding: 5px; margin-bottom: 5px;}
+</style>
+
 <head>
     <meta charset="UTF-8">
     <title>Add a new userData</title>
     <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="/CreateUserStyleSheet.css">
 </head>
-<body>
+<body class="body">
 <script type="text/javascript" src="/User.js"></script>
 <div id="Header-div">
-    <h1>Add a new User</h1>
+    <h1 style="text-align: center; color: white">Add a new User</h1>
 </div>
 
-<div id="FormToAddUser-div">
-    <label for="user_type">User Type: </label>
-    <select name="User Type" id="user_type" autocomplete="off">
+<div id="FormToAddUser-div" style="color: white; text-shadow: 1px 2px 5px black; font-size: large; text-align: center;">
+    <hr style="width: 25%">
+    <label for="user_type" style="color: white" class="label">User Type: </label>
+    <select name="User Type" id="user_type" autocomplete="off" class="user_type">
         <option disabled selected value> -- "USER" or "ADMIN" -- </option>
         <option value="USER">USER</option>
         <option value="ADMIN">ADMIN</option>
     </select><br>
-    <label for="first_name">First Name: </label>
-    <input type="text" id="first_name" name="First name" placeholder="What's your first name?" autocomplete="off"><br>
-    <label for="last_name">Last Name: </label>
-    <input type="text" id="last_name" name="Last name" placeholder="What's your last name?" autocomplete="off"><br>
-    <label for="afm">AFM: </label>
-    <input type="text" id="afm" name="afm" placeholder="What's your afm?" autocomplete="off"><br>
-    <label for="area_code">Area Code: </label>
-    <input type="text" id="area_code" name="Area code" placeholder="What's your area code?" autocomplete="off"><br><br>
+    <label for="first_name" class="label">First Name: </label>
+    <input type="text" id="first_name" name="First name" placeholder="What's your first name?" autocomplete="off" class="input"><br>
+    <label for="last_name" class="label">Last Name: </label>
+    <input type="text" id="last_name" name="Last name" placeholder="What's your last name?" autocomplete="off" class="input"><br>
+    <label for="afm" class="label">AFM: </label>
+    <input type="text" id="afm" name="afm" placeholder="What's your afm?" autocomplete="off" class="input"><br>
+    <label for="area_code" class="label">Area Code: </label>
+    <input type="text" id="area_code" name="Area code" placeholder="What's your area code?" autocomplete="off" class="input">
+    <hr style="width: 25%"><br>
 </div>
 
-<div id="AddUserbtns-div">
-    <button id="newUser_btn" onclick="addUser()">Create User</button>
-    <button onclick="history.back()">Go Back</button>
+<div id="AddUserbtns-div" style="text-align: center">
+    <button id="newUser_btn" onclick="addUser()" class="button">Create User</button>
+    <button onclick="history.back()" class="button">Go Back</button>
 </div>
 
 </body>
