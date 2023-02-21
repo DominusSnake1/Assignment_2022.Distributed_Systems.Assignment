@@ -6,22 +6,25 @@ function addVehicle() {
     veh.kteo = document.getElementById("kteo").value;
     veh.regis = document.getElementById("regis").value;
 
-    confirm(`Add ${veh.brand} ${veh.model} (${veh.kteo}) [${veh.regis}], to the database?`);
+    if (confirm(`Add ${veh.brand} ${veh.model} (${veh.kteo}) [${veh.regis}], to the database?`)) {
+        fetch(`http://127.0.0.1:8080/vehicles/owner_afm=${veh.o_afm}`, {
+            method: 'POST',
+            body: JSON.stringify({
+                owner_afm: veh.o_afm,
+                brand: veh.brand,
+                model: veh.model,
+                kteo_id: veh.kteo,
+                registration: veh.regis
+            }),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        }).then(data => {console.log(data)})
+            .then(r => alert("Vehicle has been added!"));
+    } else {
+        alert("Vehicle was not added!");
+    }
 
-    fetch(`http://127.0.0.1:8080/vehicles/owner_afm=${veh.o_afm}`, {
-        method: 'POST',
-        body: JSON.stringify({
-            owner_afm: veh.o_afm,
-            brand: veh.brand,
-            model: veh.model,
-            kteo_id: veh.kteo,
-            registration: veh.regis
-        }),
-        headers: {
-            'Content-type': 'application/json'
-        }
-    }).then(data => {console.log(data)})
-        .then(r => alert("Vehicle has been added!"));
 }
 
 function deleteVeh(id) {
