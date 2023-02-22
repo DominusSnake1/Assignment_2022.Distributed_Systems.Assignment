@@ -39,6 +39,6 @@ public class User_Controller {
 
     @GetMapping("/afm={afm}")
     public UserData get(@PathVariable int afm) {
-        return userDaoImpl.findUserById(afm);
+        return userDaoImpl.findUserByAFM(afm);
     }
 }
